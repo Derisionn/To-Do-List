@@ -1,0 +1,521 @@
+/* Todo Container - Main Card with Doodle Style */
+.todo-container {
+	max-width: 450px;
+	width: 100%;
+	background: var(--bg-card);
+	border: 4px solid transparent;
+	border-image: var(--primary-gradient) 1;
+	border-radius: var(--border-radius-xl);
+	box-shadow: var(--shadow-lg), var(--shadow-colorful);
+	padding: 32px 28px;
+	position: relative;
+	overflow: visible;
+	animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes bounceIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.3) rotate(-5deg);
+	}
+
+	50% {
+		transform: scale(1.05) rotate(2deg);
+	}
+
+	70% {
+		transform: scale(0.95) rotate(-1deg);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1) rotate(0deg);
+	}
+}
+
+/* Colorful corner decorations */
+.todo-container::before {
+	content: '✨';
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	font-size: 2.5rem;
+	animation: spin 4s linear infinite, pulse 2s ease-in-out infinite;
+	filter: drop-shadow(0 0 10px rgba(251, 188, 4, 0.5));
+}
+
+.todo-container::after {
+	content: '🎨';
+	position: absolute;
+	bottom: -15px;
+	left: -15px;
+	font-size: 2.5rem;
+	animation: wiggle 3s ease-in-out infinite;
+	filter: drop-shadow(0 0 10px rgba(234, 67, 53, 0.5));
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes pulse {
+
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.2);
+	}
+}
+
+@keyframes wiggle {
+
+	0%,
+	100% {
+		transform: rotate(0deg);
+	}
+
+	25% {
+		transform: rotate(-10deg);
+	}
+
+	75% {
+		transform: rotate(10deg);
+	}
+}
+
+/* Title with Google Doodle Style */
+.todo-title {
+	text-align: center;
+	background: var(--primary-gradient);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	margin-bottom: 40px;
+	font-size: 3rem;
+	font-weight: 700;
+	letter-spacing: -1px;
+	position: relative;
+	animation: titleBounce 1s ease 0.3s both;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+	font-family: 'Fredoka', sans-serif;
+}
+
+@keyframes titleBounce {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px) scale(0.5);
+	}
+
+	60% {
+		transform: translateY(10px) scale(1.1);
+	}
+
+	80% {
+		transform: translateY(-5px) scale(0.95);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+/* Colorful underline with multiple colors */
+.todo-title::after {
+	content: '';
+	position: absolute;
+	bottom: -16px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 120px;
+	height: 6px;
+	background: var(--primary-gradient);
+	border-radius: 3px;
+	animation: expandWidth 1s ease 0.6s both;
+	box-shadow: 0 2px 8px rgba(66, 133, 244, 0.4);
+}
+
+@keyframes expandWidth {
+	from {
+		width: 0;
+		opacity: 0;
+	}
+
+	to {
+		width: 120px;
+		opacity: 1;
+	}
+}
+
+/* Create Todo Section - Playful Style */
+.create-form {
+	display: flex;
+	gap: 14px;
+	margin-bottom: 32px;
+	animation: slideInLeft 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s both;
+}
+
+@keyframes slideInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-100px) rotate(-5deg);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0) rotate(0deg);
+	}
+}
+
+.create-input {
+	flex: 1;
+	padding: 16px 20px;
+	background: var(--bg-secondary);
+	border: 3px solid var(--border-color);
+	border-radius: var(--border-radius-md);
+	color: var(--text-primary);
+	font-size: 1.05rem;
+	font-family: 'Fredoka', sans-serif;
+	font-weight: 500;
+	transition: all var(--transition-bounce);
+	outline: none;
+	box-shadow: var(--shadow-sm);
+}
+
+.create-input::placeholder {
+	color: var(--text-muted);
+	font-weight: 400;
+}
+
+.create-input:focus {
+	background: #ffffff;
+	border-color: var(--google-blue);
+	box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.2), var(--shadow-md);
+	transform: translateY(-2px) scale(1.01);
+}
+
+/* Multi-color button with playful hover */
+.create-button {
+	padding: 16px 32px;
+	background: var(--primary-gradient);
+	background-size: 200% 200%;
+	border: none;
+	border-radius: var(--border-radius-md);
+	color: white;
+	font-size: 1.05rem;
+	font-weight: 600;
+	font-family: 'Fredoka', sans-serif;
+	cursor: pointer;
+	transition: all var(--transition-bounce);
+	box-shadow: 0 4px 16px rgba(66, 133, 244, 0.4);
+	position: relative;
+	overflow: hidden;
+	animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+
+	0%,
+	100% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+}
+
+.create-button::before {
+	content: '➕';
+	position: absolute;
+	left: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 1.2rem;
+	opacity: 0;
+	transition: all var(--transition-normal);
+}
+
+.create-button:hover::before {
+	opacity: 1;
+	left: 8px;
+}
+
+.create-button:hover {
+	transform: translateY(-4px) scale(1.05);
+	box-shadow: 0 8px 24px rgba(66, 133, 244, 0.5);
+	padding-left: 40px;
+}
+
+.create-button:active {
+	transform: translateY(-2px) scale(1.02);
+}
+
+/* Todo List with Colorful Items */
+.todo-list {
+	margin-top: 28px;
+	max-height: 450px;
+	overflow-y: auto;
+	padding-right: 12px;
+}
+
+/* Each todo item gets a different color accent */
+.todo-item {
+	background: var(--bg-secondary);
+	border: 3px solid var(--border-color);
+	border-radius: var(--border-radius-md);
+	padding: 18px 24px;
+	margin-bottom: 14px;
+	font-size: 1.1rem;
+	font-weight: 500;
+	color: var(--text-primary);
+	transition: all var(--transition-normal);
+	cursor: pointer;
+	position: relative;
+	animation: todoPopIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	box-shadow: var(--shadow-sm);
+}
+
+@keyframes todoPopIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.5) rotate(-10deg);
+	}
+
+	60% {
+		transform: scale(1.1) rotate(2deg);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1) rotate(0deg);
+	}
+}
+
+/* Colorful left border - cycles through Google colors */
+
+
+/* Fun emoji indicators */
+
+
+.todo-item:hover {
+	background: #ffffff;
+	border-color: var(--google-blue);
+	transform: translateX(6px);
+	box-shadow: 0 6px 20px rgba(66, 133, 244, 0.25);
+	padding-left: 28px;
+}
+
+
+
+
+
+/* Alternate hover colors for variety */
+.todo-item:nth-child(4n+2):hover {
+	border-color: var(--google-red);
+	box-shadow: 0 6px 20px rgba(234, 67, 53, 0.25);
+}
+
+.todo-item:nth-child(4n+3):hover {
+	border-color: var(--google-yellow);
+	box-shadow: 0 6px 20px rgba(251, 188, 4, 0.25);
+}
+
+.todo-item:nth-child(4n+4):hover {
+	border-color: var(--google-green);
+	box-shadow: 0 6px 20px rgba(52, 168, 83, 0.25);
+}
+
+/* Todo item layout */
+.todo-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.todo-text {
+	flex: 1;
+	word-break: break-word;
+}
+
+/* Checkbox Styling */
+.todo-checkbox {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	accent-color: var(--google-blue);
+	border-radius: 4px;
+	flex-shrink: 0;
+	transition: all var(--transition-normal);
+}
+
+.todo-checkbox:hover {
+	transform: scale(1.1);
+}
+
+.todo-checkbox:checked {
+	accent-color: var(--google-green);
+}
+
+/* Delete Button */
+.delete-button {
+	background: transparent;
+	border: 2px solid var(--google-red);
+	color: var(--google-red);
+	border-radius: var(--border-radius-sm);
+	padding: 6px 10px;
+	font-size: 1.2rem;
+	cursor: pointer;
+	transition: all var(--transition-normal);
+	opacity: 0;
+	transform: scale(0.8);
+	flex-shrink: 0;
+}
+
+.todo-item:hover .delete-button {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.delete-button:hover {
+	background: var(--google-red);
+	transform: scale(1.1) rotate(-10deg);
+	box-shadow: 0 4px 12px rgba(234, 67, 53, 0.4);
+}
+
+.delete-button:active {
+	transform: scale(0.95);
+}
+
+/* No Record State - Playful Empty State */
+.no-record {
+	text-align: center;
+	padding: 80px 20px;
+	animation: fadeInScale 0.8s ease;
+}
+
+@keyframes fadeInScale {
+	from {
+		opacity: 0;
+		transform: scale(0.8);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.no-record h2 {
+	color: var(--text-secondary);
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 16px;
+	font-family: 'Fredoka', sans-serif;
+}
+
+.no-record p {
+	color: var(--text-muted);
+	font-size: 1.05rem;
+	opacity: 0.8;
+}
+
+/* Animated emoji with multiple emojis cycling */
+.no-record::before {
+	content: '📝';
+	display: block;
+	font-size: 5rem;
+	margin-bottom: 24px;
+	animation: floatAndSpin 4s ease-in-out infinite, emojiCycle 8s steps(1) infinite;
+	filter: drop-shadow(0 4px 12px rgba(66, 133, 244, 0.3));
+}
+
+@keyframes floatAndSpin {
+
+	0%,
+	100% {
+		transform: translateY(0) rotate(0deg);
+	}
+
+	25% {
+		transform: translateY(-20px) rotate(-10deg);
+	}
+
+	50% {
+		transform: translateY(0) rotate(0deg);
+	}
+
+	75% {
+		transform: translateY(-20px) rotate(10deg);
+	}
+}
+
+@keyframes emojiCycle {
+
+	0%,
+	24% {
+		content: '📝';
+	}
+
+	25%,
+	49% {
+		content: '✨';
+	}
+
+	50%,
+	74% {
+		content: '🎯';
+	}
+
+	75%,
+	100% {
+		content: '🚀';
+	}
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+	.todo-container {
+		padding: 36px 28px;
+		border-width: 3px;
+	}
+
+	.todo-title {
+		font-size: 2.5rem;
+	}
+
+	.create-form {
+		flex-direction: column;
+	}
+
+	.create-button {
+		width: 100%;
+	}
+
+	.create-button:hover {
+		padding-left: 16px;
+	}
+}
+
+/* Confetti effect on hover (optional enhancement) */
+@keyframes confetti {
+	0% {
+		transform: translateY(0) rotate(0deg);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(-100px) rotate(720deg);
+		opacity: 0;
+	}
+}
