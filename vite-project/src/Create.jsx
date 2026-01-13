@@ -7,7 +7,7 @@ function Create({ onTodoAdded }) {
 
   const handleAdd = () => {
 
-    axios.post("http://localhost:3000/add", { task })
+    axios.post(`${API_URL}/add`, { task })
       .then(() => {
         setTask("")
         onTodoAdded()  // Refresh the todo list

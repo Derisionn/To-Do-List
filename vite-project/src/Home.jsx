@@ -4,11 +4,13 @@ import Create from './Create'
 import axios from 'axios'
 import './App.css'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+
 function Home() {
     const [todos, setTodos] = useState([])
 
     const fetchTodos = () => {
-        axios.get("http://localhost:3000/get")
+        axios.get(`${API_URL}/get`)
             .then((res) => {
                 setTodos(res.data)
             })
@@ -22,7 +24,7 @@ function Home() {
     }, [])
 
     const deleteTodo = (id) => {
-        axios.delete(`http://localhost:3000/delete/${id}`)
+        axios.delete(`${API_URL}/delete/${id}`)
             .then(() => {
                 fetchTodos()
             })

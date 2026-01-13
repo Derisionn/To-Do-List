@@ -52,6 +52,6 @@ app.delete("/delete/:id", (req, res) => {
         })
 })
 
-app.listen(3000, () => {
+app.listen(import.meta.env.VITE_API_PORT || 3000, () => {
     console.log("Server is running on port 3000")
 })
